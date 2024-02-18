@@ -21,9 +21,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //Move
+        _characterController.Move(_moveVector * speed * Time.fixedDeltaTime);
+        //jump
         _fallVelocity += Gravity * Time.fixedDeltaTime;
         _characterController.Move(Vector3.down * _fallVelocity * Time.fixedDeltaTime);
-        _characterController.Move(_moveVector * speed * Time.fixedDeltaTime );
+        //stop if on the ground
         if (_characterController.isGrounded)
         {
             _fallVelocity = 0;
@@ -53,8 +56,8 @@ public class PlayerController : MonoBehaviour
         
         //jump
                 if(Input.GetKeyDown(KeyCode.Space) && _characterController.isGrounded)
-        {
-            _fallVelocity = -jumpForce;
-        }
+                {
+                   _fallVelocity = -jumpForce;
+                }
     }
 }
