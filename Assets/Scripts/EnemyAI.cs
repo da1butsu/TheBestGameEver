@@ -54,14 +54,17 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
+
     private  void PickNewPatrolPoint()
     {
        _navMeshAgent.destination = (patrolPoint[Random.Range(0, patrolPoint.Count)].position);
     }
+
     private void InitComponentLinks()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
     }
+
     private void PatrolUpdate()
     {
         if (!_isPlayerNoticed)
