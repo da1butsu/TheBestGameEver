@@ -5,7 +5,8 @@ using UnityEngine;
 public class Granate : MonoBehaviour
 {
     
-    public float dealy = 3;
+    public float dealy = 0.5f;
+    public float damage = 50;
 
    
     public GameObject explosionPrefab;
@@ -19,7 +20,7 @@ public class Granate : MonoBehaviour
         Destroy(gameObject);
         var explosion =Instantiate(explosionPrefab);
         explosion.transform.position = transform.position;
-        //GetComponent<StressReceiver>().
+        explosion.GetComponent<Destroyer>().damage = damage;
         
     }
 } 

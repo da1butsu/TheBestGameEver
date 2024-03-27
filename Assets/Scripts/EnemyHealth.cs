@@ -5,20 +5,25 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public float value = 100;
-    
+    public float  experience = 10;
+    public PlayerProgress playerProgress;
+
+    void Start()
+    {
+        playerProgress = FindObjectOfType<PlayerProgress>();
+    }
+
     public void DealDamage(float damage)
     {
+        playerProgress.addExpereence(experience);
         value -= damage;
         if(value <= 0)
         {
+            
             Destroy(gameObject);
         }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
     // Update is called once per frame
     void Update()
